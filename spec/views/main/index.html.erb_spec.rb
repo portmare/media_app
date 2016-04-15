@@ -1,7 +1,7 @@
-require "rails_helper"
+require 'rails_helper'
 
-describe "main/index" do
-  it "displays the header" do
+describe 'main/index' do
+  it 'displays the header' do
     render
 
     expect(rendered).to have_content 'Медиа-коллекций'
