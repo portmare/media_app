@@ -24,7 +24,7 @@ describe User, type: :model do
     end
 
     it 'email should be unique' do
-      user1 = create(:user)
+      create(:user)
       user2 = build(:user)
       expect(user2).not_to be_valid
     end
@@ -40,7 +40,7 @@ describe User, type: :model do
     end
 
     it 'password should be confirmated' do
-      user = build(:user, password: 'onepassword', password_confirmation: 'anotherpassword')
+      user = build(:user, :different_password)
       expect(user).not_to be_valid
     end
   end
