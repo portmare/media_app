@@ -23,6 +23,12 @@ describe User, type: :model do
       expect(user).not_to be_valid
     end
 
+    it 'email should be unique' do
+      user1 = create(:user)
+      user2 = build(:user)
+      expect(user2).not_to be_valid
+    end
+
     it 'password should be present' do
       user = build(:user, password: nil, password_confirmation: nil)
       expect(user).not_to be_valid
