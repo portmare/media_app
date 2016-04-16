@@ -48,9 +48,13 @@ group :development do
   gem 'spring'
 end
 
-# grid system for views
+# grid system for views and fonts
 gem 'bootstrap-sass'
+gem 'font-awesome-sass', '~> 4.4.0'
 
 # auth
 gem 'authlogic'
+
+# for view
+gem 'slim'
 

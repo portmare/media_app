@@ -1,0 +1,19 @@
+.sign-up-form.center-block
+  .logo
+    = render 'shared/link_to_root_page'
+  .header
+    h3 Sign up now
+    p Fill in the form below to get instant access:
+  .footer
+    = form_for @user do |f|
+      = render partial: 'shared/errors', locals: { object: @user }
+      .form-group
+        = f.text_field :name, placeholder: 'Full name...', class: 'form-control'
+      .form-group
+        = f.text_field :email, placeholder: 'Email...', class: 'form-control'
+      .form-group
+        = f.text_field :password, placeholder: 'Password...', class: 'form-control'
+      .form-group
+        = f.text_field :password_confirmation, placeholder: 'Password confirmation...', class: 'form-control'
+      .form-group
+        = f.submit 'Sign up', class: 'btn btn-success btn-block'
