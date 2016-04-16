@@ -1,10 +1,12 @@
 # User's model
+
 class User < ActiveRecord::Base
-  has_secure_password
-
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 8 }
+
+  acts_as_authentic do |c|
+    c.crypto_provider = Authlogic::CryptoProviders::Sha512
+    c.login_field = :email
+    c.validate_password_field = true
+  end
 end
