@@ -6,6 +6,11 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
+    header.navbar
+      .container
+        .navbar-header
+          = render 'shared/link_to_root_page'
+        = render 'shared/top_navigation'
     .container
       .row
         == yield

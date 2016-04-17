@@ -1,6 +1,4 @@
 .sign-up-form.center-block
-  .logo
-    = render 'shared/link_to_root_page'
   .header
     h3 Sign up now
     p Fill in the form below to get instant access:
@@ -12,8 +10,8 @@
       .form-group
         = f.text_field :email, placeholder: 'Email...', class: 'form-control'
       .form-group
-        = f.text_field :password, placeholder: 'Password...', class: 'form-control'
+        = f.password_field :password, placeholder: 'Password...', class: 'form-control'
       .form-group
-        = f.text_field :password_confirmation, placeholder: 'Password confirmation...', class: 'form-control'
+        = f.password_field :password_confirmation, placeholder: 'Password confirmation...', class: 'form-control'
       .form-group
         = f.submit 'Sign up', class: 'btn btn-success btn-block'

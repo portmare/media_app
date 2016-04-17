@@ -1,0 +1,7 @@
+.nav.nav-pills.pull-right
+  - if current_user.present?
+    li = current_user.name
+    li = link_to 'Sign out', user_session_path(current_user_session), method: :delete
+  - else
+    li = link_to 'Sing in', new_user_session_path
+    li = link_to 'Sign up FREE', new_user_path, class: 'btn btn-info'

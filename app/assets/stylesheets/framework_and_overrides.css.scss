@@ -33,7 +33,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.sign-up-form {
+.sign-up-form, .sign-in-form {
   @include vh-center();
   width: 500px;
   border: 1px solid #ddd;
@@ -43,7 +43,7 @@ body {
     padding: 0 25px 15px 25px;
     background: #fff;
     border-bottom: 1px solid #ddd;
-    text-align: center;
+    text-align: left;
   }
 
   .footer {
@@ -53,7 +53,7 @@ body {
   }
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
   @include input-control(#888, #f8f8f8);
 }
 
