@@ -1,7 +1,7 @@
-# /spec/controllers/user_sessions_controller_spec.rb
+# /spec/controllers/user_session_controller_spec.rb
 require 'rails_helper'
 
-describe UserSessionsController do
+describe UserSessionController do
   def mock_user_session(stubs={})
     @mock_user_session ||= double(UserSession, stubs).as_null_object
   end
@@ -50,5 +50,21 @@ describe UserSessionsController do
         end
       end
     end
+
+    describe 'DELETE destroy' do
+      it 'fails to load' do
+        delete :destroy
+        expect(response).not_to be_success
+      end
+
+      it 'redirect to sign in path' do
+        delete :destroy
+        expect(response).to redirect_to(sign_in_path)
+      end
+    end
+  end
+
+  describe 'when' do
+    
   end
 end
