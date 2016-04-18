@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe UserSessionController do
   def mock_user_session(stubs={})
-    @mock_user_session ||= double(UserSession, stubs).as_null_object
+    @mock_user_session ||= double(UserSession, stubs)
   end
 
   describe 'when no user authenticated' do
@@ -64,7 +64,49 @@ describe UserSessionController do
     end
   end
 
-  describe 'when' do
-    
+  describe 'when user authenticated' do
+    setup :activate_authlogic
+
+    before(:each) do
+      UserSession.create(build(:user))
+    end
+
+    describe 'GET new' do
+      it 'fails to load' do
+        get :new
+        expect(response).not_to be_success
+      end
+
+      it 'redirected to root path' do
+        get :new
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    describe 'POST create' do
+      it 'fails to load' do
+        post :create
+        expect(response).not_to be_success
+      end
+
+      it 'redirected to root path' do
+        post :create
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    describe 'DELETE destroy' do
+      it 'destroys user session' do
+        allow(UserSession).to receive(:find).and_return(mock_user_session)
+        allow(mock_user_session).to receive(:user).and_return(true)
+        expect(mock_user_session).to receive(:destroy)
+        delete :destroy
+      end
+
+      it 'redirect to root path' do
+        delete :destroy
+        expect(response).to redirect_to(root_path)
+      end
+    end
   end
 end

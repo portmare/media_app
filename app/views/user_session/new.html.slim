@@ -2,7 +2,7 @@
   .header
     h3 Sign in
   .footer
-    = form_for @user_session do |f|
+    = form_for @user_session, url: sign_in_path do |f|
       = render partial: 'shared/errors', locals: { object: @user_session }
       .form-group
         = f.text_field :email, placeholder: 'Email...', class: 'form-control'

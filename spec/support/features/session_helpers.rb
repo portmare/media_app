@@ -9,5 +9,13 @@ module Features
       fill_in 'user_password_confirmation', with: password_confirmation
       click_button 'Sign up'
     end
+
+    def sign_in_with(email, password)
+      user = create(:user)
+      visit sign_in_path
+      fill_in 'user_session_email', with: email
+      fill_in 'user_session_password', with: password
+      click_button 'Sign in'
+    end
   end
 end

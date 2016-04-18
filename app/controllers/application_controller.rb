@@ -28,7 +28,14 @@ class ApplicationController < ActionController::Base
     def require_user
       unless current_user
         store_location
-        redirect_to sign_in_path, notice: 'You must be sign in to access this page' and return false
+        redirect_to(sign_in_path, notice: 'You must be sign in to access this page') and return false
+      end
+    end
+
+    def require_no_user
+      if current_user
+        store_location
+        redirect_to(root_path, notice: 'You must sing out to access this page') and return false
       end
     end
 end
