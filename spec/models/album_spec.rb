@@ -23,4 +23,9 @@ describe Album, type: :model do
       expect(album.token).not_to be_nil
     end
   end
+
+  it 'delete token key when delete album' do
+    album = create(:album)
+    expect { album.destroy }.to change { TokenKey.count }.by(-1)
+  end
 end
