@@ -58,3 +58,5 @@ gem 'authlogic'
 # for view
 gem 'slim'
 
+# for an authorization
+gem 'pundit'
