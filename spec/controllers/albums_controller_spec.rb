@@ -22,24 +22,20 @@ describe AlbumsController, type: :controller do
       end
 
       it 'GET edit redirected to sign in path' do
+        allow(Album).to receive(:find).and_return(album)
         get :edit, id: album.id
         expect(response).to redirect_to(sign_in_path)
       end
 
       it 'PATCH update redirected to sign in path' do
+        allow(Album).to receive(:find).and_return(album)
         patch :update, id: album.id
         expect(response).to redirect_to(sign_in_path)
       end
 
       it 'DELETE destroy redirected to sign in path' do
+        allow(Album).to receive(:find).and_return(album)
         delete :destroy, id: album.id
-        expect(response).to redirect_to(sign_in_path)
-      end
-    end
-
-    describe 'without token key' do
-      it 'GET show redirected to sign in path' do
-        get :show, id: album.id
         expect(response).to redirect_to(sign_in_path)
       end
     end

@@ -1,6 +1,7 @@
+# /app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  include Pundit
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :exception
   
   helper_method :current_user_session, :current_user
@@ -37,5 +38,10 @@ class ApplicationController < ActionController::Base
         store_location
         redirect_to(root_path, notice: 'You must sing out to access this page') and return false
       end
+    end
+
+    def user_not_authorized
+      store_location
+      redirect_to(sign_in_path, notice: 'You must be sign in to access this page') and return false
     end
 end
