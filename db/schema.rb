@@ -11,19 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419055411) do
+ActiveRecord::Schema.define(version: 20160419180727) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.string   "token",                  null: false
-    t.integer  "access",     default: 0, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "albums", ["token"], name: "index_albums_on_token"
   add_index "albums", ["user_id"], name: "index_albums_on_user_id"
+
+  create_table "token_keys", force: :cascade do |t|
+    t.string   "token",                      null: false
+    t.integer  "access",         default: 0, null: false
+    t.integer  "tokenable_id"
+    t.string   "tokenable_type"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "token_keys", ["tokenable_type", "tokenable_id"], name: "index_token_keys_on_tokenable_type_and_tokenable_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

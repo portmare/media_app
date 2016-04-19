@@ -13,6 +13,11 @@ describe Album, type: :model do
       expect(album).not_to be_valid
     end
 
+    it 'with empty user is not valid' do
+      album = build(:album, user: nil)
+      expect(album).to be_invalid
+    end
+
     it 'with generated token is valid' do
       album = create(:album)
       expect(album.token).not_to be_nil
