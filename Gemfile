@@ -60,3 +60,6 @@ gem 'slim'
 
 # for an authorization
 gem 'pundit'
+
+# for upload images
+gem 'carrierwave'

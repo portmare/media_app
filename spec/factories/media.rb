@@ -3,6 +3,6 @@ FactoryGirl.define do
   factory :media do
     association :album
     link nil
-    image ['image01.jpg']
+    image { Rack::Test::UploadedFile.new(File.open(Rails.root.join(*%w[spec fixtures test_image.png]))) }
   end
 end
