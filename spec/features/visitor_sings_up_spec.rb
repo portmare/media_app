@@ -19,7 +19,7 @@ feature 'Visitor signs up', type: :feature do
 end
 
 feature 'Visitor signs in', type: :feature do
-  let(:user) { build(:user) }
+  let(:user) { create(:user) }
 
   scenario 'with valid email and password' do
     sign_in_with user.email, user.password

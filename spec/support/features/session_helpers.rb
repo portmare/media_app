@@ -11,11 +11,16 @@ module Features
     end
 
     def sign_in_with(email, password)
-      user = create(:user)
       visit sign_in_path
       fill_in 'user_session_email', with: email
       fill_in 'user_session_password', with: password
       click_button 'Sign in'
+    end
+
+    def as_user(user)
+      sign_in_with(user.email, user.password)
+      yield
+      click_link 'Sign out'
     end
   end
 end

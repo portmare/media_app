@@ -7,13 +7,11 @@ feature 'Visitor deletes the album' do
   let(:user) { create(:user) }
   given!(:album) { Album.create!(name: 'Some name', user: user) }
 
-  before(:each) do
-    UserSession.create(user)
-  end
-
   scenario do
-    visit root_path
-    click_link 'Delete'
-    expect(page).to have_content('success')
+    as_user(user) do
+      visit albums_path
+      click_link 'Delete'
+      expect(page).to have_content('success')
+    end
   end
 end

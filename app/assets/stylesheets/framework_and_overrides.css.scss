@@ -26,7 +26,17 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+@mixin vertical-center() {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%)
 }
 
 body {
@@ -59,4 +69,28 @@ input[type="text"], input[type="password"] {
 
 input[type="submit"] {
   @include input-control($btn-success-color, $btn-success-bg);
+}
+
+.content-header {
+  height: 50px;
+  border-bottom: 2px dotted #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+
+  & > div {
+    @include vertical-center();
+  }
+}
+
+.album {
+  height: 300px;
+  border: 2px solid #eee;
+  
+  & .album-header {
+    height: 50px;
+
+    & > div {
+      @include vertical-center();
+    }
+  }
 }

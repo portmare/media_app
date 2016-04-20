@@ -1,0 +1,12 @@
+.col-md-3.album
+  .album-header
+    .pull-left
+      h4
+        strong 
+          = link_to album.name, edit_album_path(album)
+    .pull-right
+      = link_to 'Delete', album_path(album), method: :delete, class: 'btn btn-danger btn-sm'
+    .clear-fix
+  .album-content
+    = album.name
+  

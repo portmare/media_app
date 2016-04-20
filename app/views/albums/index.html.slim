@@ -1,0 +1,10 @@
+= content_for :title
+  | Your media albums
+= content_for :content_header
+  = link_to new_album_path, class: 'btn btn-success'
+    == "#{icon('plus')} Add new album"
+
+= render 'shared/content_header'
+.col-md-12
+  .albums-content
+    = render partial: 'album', collection: @albums

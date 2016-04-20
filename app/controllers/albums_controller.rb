@@ -42,6 +42,10 @@ class AlbumsController < ApplicationController
 
   private
 
+  def album_params
+    params.require(:album).permit(:name).merge(user: current_user)
+  end
+
   def set_album
     @album = Album.find(params[:id])
     authorize @album
