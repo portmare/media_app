@@ -4,7 +4,6 @@ module Tokenize
 
   included do
     has_one :token_key, as: :tokenable, dependent: :destroy
-    enum access: { closed: 0, shared: 1 }
     before_validation :generate_token, on: :create
 
     delegate :token, to: :token_key
