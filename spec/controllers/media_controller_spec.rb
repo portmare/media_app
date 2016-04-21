@@ -3,18 +3,26 @@ require 'rails_helper'
 
 describe MediaController, type: :controller do
   describe 'when no authenticated user' do
+    let(:album) { build_stubbed(:album) }
+
+    before(:each) do
+      allow(Album).to receive(:find).and_return(album)
+    end
+
     it 'GET new redirected to sign in path' do
-      get :new
+      get :new, album_id: album
       expect(response).to redirect_to(sign_in_path)
     end
 
     it 'POST create redirected to sign in path' do
-      post :create, media: {}
+      post :create, media: attributes_for(:media), album_id: album
       expect(response).to redirect_to(sign_in_path)
     end
 
     it 'DELETE destroy redirected to sign in path' do
-      delete :destroy, id: build_stubbed(:media)
+      media = build_stubbed(:media)
+      allow(Media).to receive(:find).and_return(media)
+      delete :destroy, id: media, album_id: album
       expect(response).to redirect_to(sign_in_path)
     end
   end
@@ -37,12 +45,12 @@ describe MediaController, type: :controller do
 
     it 'POST #create uploads image to store' do
       expect { 
-        post :create, media: attributes_for(:media)
+        post :create, media: attributes_for(:media), album_id: @album
       }.to change { Media.count }.by(1)
     end
 
     it 'POST #create redirected to album' do
-      post :create, album_id: @album, media: attributes_for(@media)
+      post :create, album_id: @album, media: attributes_for(:media)
       expect(response).to redirect_to(edit_album_path(@album))
     end
 
