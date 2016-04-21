@@ -18,7 +18,7 @@ class AlbumsController < ApplicationController
     authorize Album
     @album = Album.new(album_params)
     if @album.save
-      redirect_to root_path, notice: 'Album created successfully'
+      redirect_to albums_path, notice: 'Album created successfully'
     else
       render :new
     end
@@ -29,7 +29,7 @@ class AlbumsController < ApplicationController
 
   def update
     if @album.update(album_params)
-      redirect_to root_path, notice: 'Album updated successfully'
+      redirect_to albums_path, notice: 'Album updated successfully'
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class AlbumsController < ApplicationController
 
   def destroy
     @album.destroy
-    redirect_to root_path, notice: 'Album deleted successfully'
+    redirect_to albums_path, notice: 'Album deleted successfully'
   end
 
   private

@@ -28,6 +28,11 @@ describe Album, type: :model do
     album = create(:album)
     expect { album.destroy }.to change { TokenKey.count }.by(-1)
   end
+  
+  it 'delete album when delete album' do
+    album = create(:album)
+    expect { album.destroy }.to change { Album.count }.by(-1)
+  end
 
   it 'delegate token to token key' do
     album = create(:album)
