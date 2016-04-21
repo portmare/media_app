@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'main#index'
 
-  resources :users, only: %w(new create)
+  resources :users, only: %i(new create)
   resources :albums, except: :show do
-    resource :media, only: %w(new create destroy)
+    resource :media, only: %i(new create destroy)
   end
 
   get 'sign_in', to: 'user_session#new'

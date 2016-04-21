@@ -1,0 +1,20 @@
+= content_for :title
+  | Add new image
+= content_for :content_header
+  = render 'shared/back_button'
+
+= render 'shared/content_header'
+.col-md-12
+  = form_for(@media, url: album_media_path(@album)) do |f|
+    = render partial: 'shared/errors', locals: { object: @media }
+    .form-group
+      = f.label :image, 'Choose image from your disk', class: 'control-label'
+      = f.file_field :image, class: 'form-control', placeholder: ''
+    .form-group.text-center
+      h3 
+        strong OR
+    .form-group
+      = f.text_field :link, class: 'form-control', placeholder: 'Or input link to an image, such: http://exapmle.com/image.jpg'
+    .form-group.row
+      .col-md-2.col-md-offset-10
+        = f.submit 'Upload', class: 'btn btn-success btn-block'

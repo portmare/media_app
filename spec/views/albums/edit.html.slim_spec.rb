@@ -17,4 +17,9 @@ describe 'albums/edit' do
     render
     expect(rendered).to have_field('album_name', with: album.name)
   end
+
+  it 'displays a link #Add new image' do
+    render
+    expect(rendered).to have_link('Add new image')
+  end
 end

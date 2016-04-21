@@ -4,7 +4,7 @@ module Features
     def create_new_image_with_image(album, image)
       visit edit_album_path(album)
       click_link 'Add new image'
-      fill_in 'media_image', with: image
+      attach_file('media_image', image)
       click_button 'Upload'
     end
 
@@ -12,7 +12,7 @@ module Features
       visit edit_album_path(album)
       click_link 'Add new image'
       fill_in 'media_link', with: link
-      click_link 'Upload'
+      click_button 'Upload'
     end
   end
 end

@@ -9,10 +9,7 @@
             = 'Content title'
     .pull-right
           - if content_for?(:content_header) 
-            = yield(:content_header) 
-          - else 
-            = link_to '#', class: 'btn btn-primary', onclick: 'history.back(); return false;'
-              == "#{icon(:undo)} Back"
+            = yield(:content_header)
 - if notice.present?
   .col-md-12
     .alert.alert-success.alert-dismissible{role='alert'}

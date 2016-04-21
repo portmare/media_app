@@ -1,5 +1,9 @@
 = content_for :title
   | Edit album
+= content_for :content_header
+  = link_to new_album_media_path(@album), class: 'btn btn-success'
+    == "#{icon('plus')} Add new image"
+  = render 'shared/back_button'
 
 = render 'shared/content_header'
 .col-md-12
