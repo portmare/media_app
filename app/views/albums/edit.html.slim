@@ -1,10 +1,14 @@
 = content_for :title
   | Edit album
 = content_for :content_header
-  = link_to new_album_media_path(@album), class: 'btn btn-success'
+  = link_to new_album_medium_path(@album), class: 'btn btn-success'
     == "#{icon('plus')} Add new image"
   = render 'shared/back_button'
 
 = render 'shared/content_header'
 .col-md-12
   = render 'form'
+.col-md-12
+  .medias-content
+    .h3.text-center == "Collection of images (count: #{@album.medias.count})"
+    = render partial: 'media/media', collection: @album.medias

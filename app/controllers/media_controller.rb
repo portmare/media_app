@@ -1,7 +1,7 @@
 # /app/controllers/media_controller.rb
 class MediaController < ApplicationController
   after_action :verify_authorized
-  before_action :set_album
+  before_action :set_album, except: :destroy
 
   def new
     @media = @album.medias.build
@@ -22,8 +22,9 @@ class MediaController < ApplicationController
   def destroy
     @media = Media.find(params[:id])
     authorize @media
+    album = @media.album
     @media.destroy
-    redirect_to edit_album_path(@album), notice: 'Your image destroy successfully'
+    redirect_to edit_album_path(album), notice: 'Your image destroy successfully'
   end
 
   private

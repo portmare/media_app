@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(new create)
   resources :albums, except: :show do
-    resource :media, only: %i(new create destroy)
+    resources :media, only: %i(new create destroy), shallow: true
   end
 
   get 'sign_in', to: 'user_session#new'
