@@ -1,0 +1,8 @@
+.container
+  .row
+    .col-md-12
+      .h2
+        strong 
+          == "Album name: #{object.name}"
+    .col-md-12
+      = render partial: 'media/media', collection: object.medias

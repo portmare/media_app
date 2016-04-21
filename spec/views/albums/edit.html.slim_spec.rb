@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 describe 'albums/edit' do
-  let(:album) { build_stubbed(:album) }
+  let(:album) { build_stubbed(:album, token_key: build_stubbed(:token_key)) }
 
   before(:each) do
     assign(:album, album)

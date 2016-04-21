@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   post 'sign_in', to: 'user_session#create'
   delete 'sign_out', to: 'user_session#destroy'
 
-  resources :token_keys, only: :show, param: :token, path: 'shared'
+  resources :token_keys, only: [:show, :update], param: :token, path: 'shared'
 end
