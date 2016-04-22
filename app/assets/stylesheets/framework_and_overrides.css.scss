@@ -39,8 +39,50 @@
   transform: translateY(-50%)
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
+  position: relative;
+  padding-bottom: 50px;
+  min-height: 100%;
+
+  & #footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+header {
+  & .container {
+    height: 100px;
+     
+    & > div {
+      height: 100px;
+      @include vertical-center();
+
+      & .user-name {
+        margin-right: 20px;
+      }
+
+      & > li, & div {
+        @include vertical-center();
+      }
+
+      & h2 {
+        margin-top: 0px;
+      }
+    }
+  }
+}
+
+.main-content {
+  @include vh-center();
+  color: #333;
 }
 
 .sign-up-form, .sign-in-form {

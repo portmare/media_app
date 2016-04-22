@@ -19,3 +19,6 @@ html
     .container
       .row
         == yield
+    #footer
+      = link_to 'https://github.com/portmare/media_app', class: 'btn btn-default'
+        == "#{icon('github')} Fork me"

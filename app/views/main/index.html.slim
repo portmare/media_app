@@ -1,4 +1,5 @@
-.text-center
-  h2 
-    strong == "#{icon('camera')} MEDIA COLLECTIONS"
-  = link_to 'Sign up', new_user_path
+.main-content
+  div.text-center = image_tag image_url('logo')
+  h3.text-center 
+    | This portal allows you to UPLOAD, STORE and SHARE your media files for FREE.&nbsp;
+    = link_to 'Sign Up', new_user_path
