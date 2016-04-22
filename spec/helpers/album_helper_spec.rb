@@ -18,19 +18,23 @@ describe AlbumHelper, type: :helper do
     describe 'album is persisted' do
       let(:album) { create(:album) }
 
+      before(:each) do
+        assign(:album, album)
+      end
+
       it 'displays link with text #Share# if access = 0' do
-        expect(helper.shared_button(album)).to match /<a (.*)>Share<\/a>/
+        expect(helper.shared_button).to match /<a (.*)>Share<\/a>/
       end
 
       it 'displays link with text #Share# if access = 1' do
         allow(album.token_key).to receive(:access).and_return('shared')
-        expect(helper.shared_button(album)).to match /<a (.*)>Close share<\/a>/
+        expect(helper.shared_button).to match /<a (.*)>Close share<\/a>/
       end
     end
 
     it 'return nil if album is not persisted' do
-      album = Album.new
-      expect(helper.shared_button(album)).to be_nil
+      assign(:album, Album.new)
+      expect(helper.shared_button).to be_nil
     end
   end
 
@@ -38,19 +42,23 @@ describe AlbumHelper, type: :helper do
     describe 'album is persisted' do
       let(:album) { create(:album) }
 
+      before(:each) do
+        assign(:album, album)
+      end
+
       it 'displays input field with token if album is shared' do
         allow(album.token_key).to receive(:closed?).and_return(false)
-        expect(helper.album_token(album)).to match album.token
+        expect(helper.album_token).to match album.token
       end
 
       it 'return nil if album is closed' do
-        expect(helper.album_token(album)).to be_nil
+        expect(helper.album_token).to be_nil
       end
     end
 
     it 'return nil if album is not persisted' do
-      album = Album.new
-      expect(helper.album_token(album)).to be_nil
+      assign(:album, Album.new)
+      expect(helper.album_token).to be_nil
     end
   end
 end

@@ -3,5 +3,4 @@
     = image_tag media.image, class: 'img-responsive'
     #overlay
       span
-        = link_to medium_path(media), method: :delete, class: 'btn btn-danger'
-          == "#{icon('trash-o')} Delete"
+        = link_to_delete(media)

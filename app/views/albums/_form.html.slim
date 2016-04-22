@@ -3,7 +3,7 @@
   .form-group
     = f.text_field :name, class: 'form-control', placeholder: 'Name of album...'
   .form-group
-    = album_token(@album)
+    = album_token
   .form-group.row
     .col-md-2.col-md-offset-10
       = f.submit 'Save', class: 'btn btn-success btn-block'
